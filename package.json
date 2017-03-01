@@ -1,0 +1,22 @@
+{
+  "name": "infomobi",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server -d"
+  },
+  "author": "Rui Cheng <rui.cheng@infotrack.com.au> (www.infotrack.com.au)",
+  "devDependencies": {
+    "awesome-typescript-loader": "^3.0.8",
+    "typescript": "^2.2.1",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  },
+  "dependencies": {
+    "@types/react": "^15.0.13",
+    "@types/react-dom": "^0.14.23",
+    "preact": "^7.2.0",
+    "preact-compat": "^3.13.1"
+  }
+}
