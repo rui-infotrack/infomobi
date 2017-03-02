@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server -d"
+    "dev": "webpack-dev-server --history-api-fallback --hot --inline --progress --colors --port 3000"
   },
   "author": "Rui Cheng <rui.cheng@infotrack.com.au> (www.infotrack.com.au)",
   "devDependencies": {
     "awesome-typescript-loader": "^3.0.8",
+    "css-loader": "^0.26.2",
+    "style-loader": "^0.13.2",
     "typescript": "^2.2.1",
+    "url-loader": "^0.5.8",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1"
   },
@@ -17,6 +20,8 @@
     "@types/react": "^15.0.13",
     "@types/react-dom": "^0.14.23",
     "preact": "^7.2.0",
-    "preact-compat": "^3.13.1"
+    "preact-compat": "^3.13.1",
+    "react-weui": "^1.0.3",
+    "weui": "1.1.0"
   }
 }

@@ -4,13 +4,13 @@ const awesomeTsLoader = require('awesome-typescript-loader');
 
 const sourcePath = path.join(__dirname, './client');
 const distPath = path.join(__dirname, './dist');
+const embedFileSize = 65536;
 
 module.exports = function (env) {
   const nodeEnv = env && env.prod ? 'production' : 'development';
   const isProd = nodeEnv === 'production';
 
   return {
-    devtool: isProd ? 'source-map' : 'eval',
     context: sourcePath,
     entry: {
       app: './index.tsx'
@@ -30,6 +30,21 @@ module.exports = function (env) {
             'awesome-typescript-loader'
           ],
         },
+        {
+          test: /\.svg.*$/,
+          use: ['url-loader']
+        },
+        {
+          test: /\.(otf|eot|ttf|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          use: ['url-loader']
+        },
+        {
+          test: /\.css$/,
+          use: [
+            'style-loader',
+            'css-loader'
+          ]
+        }
       ],
     },
     resolve: {
@@ -47,12 +62,12 @@ module.exports = function (env) {
     plugins: [
       new awesomeTsLoader.CheckerPlugin(),
     ],
-
     performance: isProd && {
       maxAssetSize: 100,
       maxEntrypointSize: 300,
       hints: 'warning',
     },
+    devtool: 'source-map',
 
     stats: {
       colors: {
@@ -63,24 +78,22 @@ module.exports = function (env) {
     devServer: {
       contentBase: './client',
       historyApiFallback: true,
-      port: 3000,
-      compress: isProd,
-      inline: !isProd,
-      hot: !isProd,
-      stats: {
-        assets: true,
-        children: false,
-        chunks: false,
-        hash: false,
-        modules: false,
-        publicPath: false,
-        timings: true,
-        version: false,
-        warnings: true,
-        colors: {
-          green: '\u001b[32m',
-        }
-      },
+      // port: 3000,
+      // compress: isProd,
+      // stats: {
+      //   assets: true,
+      //   children: false,
+      //   chunks: false,
+      //   hash: false,
+      //   modules: false,
+      //   publicPath: false,
+      //   timings: true,
+      //   version: false,
+      //   warnings: true,
+      //   colors: {
+      //     green: '\u001b[32m',
+      //   }
+      // },
     }
   };
 };
